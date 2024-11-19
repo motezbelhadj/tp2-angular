@@ -1,0 +1,27 @@
+<!-- app.component.html -->
+<div class="container">
+  <h1>{{ title }}</h1>
+  
+  <button (click)="showGreeting()">Bonjour</button><br>
+  
+  <input type="text" [(ngModel)]="enteredText" placeholder="Ajouter un élément">
+  <button (click)="extractText()">Ajouter</button>
+  <button (click)="deleteLastItem()">Supprimer</button>
+  <button (click)="toggleRandomColoring()">{{ buttonLabel }}</button>
+
+  <button (click)="toggleSortingMode()">{{ sortingModeLabel }}</button>
+
+  <button (click)="show()">{{ getButtonText() }}</button>
+  
+  <ul *ngIf="isShown">
+    <li *ngFor="let item of listService.getItems(); let i = index" [ngStyle]="{ 'color': item.color }">
+      {{ item.text }}
+    </li>
+  </ul>
+</div>
+
+<router-outlet></router-outlet>
+
+
+
+
